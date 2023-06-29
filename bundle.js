@@ -42,6 +42,8 @@
 /************************************************************************/
 var __webpack_exports__ = {};
 
+;// CONCATENATED MODULE: ./src/asset/img/Icono-144-px.png
+const Icono_144_px_namespaceObject = __webpack_require__.p + "images/Icono-144-px.png";
 ;// CONCATENATED MODULE: ./src/asset/img/consola.png
 const consola_namespaceObject = __webpack_require__.p + "images/consola.png";
 ;// CONCATENATED MODULE: ./src/asset/img/pcgamer.jpg
@@ -242,8 +244,7 @@ function desplegarOpciones() {
 
 
 
-                                             
-
+                                              
 
 app()
 
