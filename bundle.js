@@ -172,17 +172,26 @@ function activarModal(cb) {
     let btn = document.getElementById('btn')
     let btn2 = document.getElementById('btn2')
     btn.addEventListener('click',function () {
-        cb('block','hidden')
+        elementoModal.classList.remove('hidde-modal')
+        elementoModal.classList.add('modal')
+        document.body.style.overflowY  = 'hidden'
+       // cb('block','hidden')
     })
     btn2.addEventListener('click',function () {
-        cb('block','hidden')
+        elementoModal.classList.remove('hidde-modal')
+        elementoModal.classList.add('modal')
+        document.body.style.overflowY  = 'hidden'
+       // cb('block','hidden')
     })
 }
 
 function desactivarModal(cb) {
     let elementoCross = document.getElementById('icon-cross')
     elementoCross.addEventListener('click',function () {
-        cb('none','scroll')
+        elementoModal.classList.add('hidde-modal')
+        elementoModal.classList.remove('modal')
+        document.body.style.overflowY  = 'scroll'
+       // cb('none','scroll')
     })
 }
 function x(display,overflow) {
