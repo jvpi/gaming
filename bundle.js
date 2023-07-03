@@ -163,65 +163,58 @@ function showPosition(position) {
 
 ;// CONCATENATED MODULE: ./src/js/modal/index.js
 /* harmony default export */ function modal() {
-    activarModal(x)
-    desactivarModal(x)
+    activarModal()
+    desactivarModal()
 }
 let elementoModal = document.getElementById('modal')
 let elementoContainerCross = document.getElementById('container-cross')
-function activarModal(cb) {
+function activarModal() {
     let btn = document.getElementById('btn')
     let btn2 = document.getElementById('btn2')
-    btn.addEventListener('click',function () {
-        elementoModal.classList.remove('hidde-modal')
-        elementoModal.classList.add('modal')
-        document.body.style.overflowY  = 'hidden'
-       // cb('block','hidden')
+    btn.addEventListener('click', function () {
+        x('modal','hidden','hidde-modal') 
     })
-    btn2.addEventListener('click',function () {
-        elementoModal.classList.remove('hidde-modal')
-        elementoModal.classList.add('modal')
-        document.body.style.overflowY  = 'hidden'
-       // cb('block','hidden')
+    btn2.addEventListener('click', function () {
+        x('modal','hidden','hidde-modal') 
     })
 }
 
-function desactivarModal(cb) {
+function desactivarModal() {
     let elementoCross = document.getElementById('icon-cross')
-    elementoCross.addEventListener('click',function () {
-        elementoModal.classList.add('hidde-modal')
-        elementoModal.classList.remove('modal')
-        document.body.style.overflowY  = 'scroll'
-       // cb('none','scroll')
+    elementoCross.addEventListener('click', function () {
+        x('hidde-modal','scroll','modal') 
     })
 }
-function x(display,overflow) {
-    elementoContainerCross.style.display = display
-    document.body.style.overflowY  = overflow
-    elementoModal.style.display = display
+
+function x(modal,hidden,hiddeModal) {
+    elementoModal.classList.add(modal)
+    document.body.style.overflowY = hidden
+    elementoModal.classList.remove(hiddeModal)
 }
+
+
+
 ;// CONCATENATED MODULE: ./src/js/modal/Selectbox.js
 /* harmony default export */ function Selectbox() {
-    desplegarOpciones()
+    toggleOpciones()
 }
 let activacion = true
-
-function desplegarOpciones() {
+let elemetoOpciones = document.getElementById('opciones')
+function toggleOpciones() {
     let elemetoSelect = document.getElementById('select')
-    let elemetoOpciones = document.getElementById('opciones')
     elemetoSelect.addEventListener('click',function (params) {
-        
         if (activacion) {
-            elemetoOpciones.style.transform = 'scaleX(1)'
-            activacion = false
-
-            console.log('true');
-            return activacion
+            return Selectbox_x('scaleX(1)',false)
         }
-        elemetoOpciones.style.transform = 'scaleX(0)'
-        console.log('false');
-        activacion = true
-        return activacion
+        return Selectbox_x('scaleX(0)',true)
+       
     })
+}
+
+function Selectbox_x(scaleX,boolean) {
+    elemetoOpciones.style.transform = scaleX
+    activacion = boolean
+    return activacion
 }
 ;// CONCATENATED MODULE: ./src/js/validarsw.js
 /* harmony default export */ function validarsw() {
@@ -248,15 +241,17 @@ function installprompt() {
         installButton.hidden = false;
         installButton.addEventListener("click", installApp);
     });
+  
 }
 
 function installApp() {
-    deferredPrompt.prompt();
+   deferredPrompt.prompt();
     installButton.disabled = true;
     deferredPrompt.userChoice.then(choiceResult => {
         if (choiceResult.outcome === "accepted") {
             console.log("PWA setup accepted");
             installButton.hidden = true;
+            installButton.classList.remove('btn-intall')
         } else {
             console.log("PWA setup rejected");
         }
