@@ -239,6 +239,7 @@ function installprompt() {
         e.preventDefault();
         deferredPrompt = e;
         installButton.hidden = false;
+        installButton.classList.add('btn-intall')
         installButton.addEventListener("click", installApp);
     });
   
@@ -246,10 +247,9 @@ function installprompt() {
 
 function installApp() {
    deferredPrompt.prompt();
-    installButton.disabled = true;
+   installButton.disabled = true;
     deferredPrompt.userChoice.then(choiceResult => {
         if (choiceResult.outcome === "accepted") {
-            console.log("PWA setup accepted");
             installButton.hidden = true;
             installButton.classList.remove('btn-intall')
         } else {
